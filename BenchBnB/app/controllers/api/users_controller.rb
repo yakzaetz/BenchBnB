@@ -4,6 +4,10 @@ class Api::UsersController < ApplicationController
         @user = User.new(user_params)
 
         if @user.save
+            login!(@user)
+        else
+            flash.now[:errors] = @users.errors.full_messages
+        end
     end
 
     private
