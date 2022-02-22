@@ -5,6 +5,7 @@ class Api::UsersController < ApplicationController
 
         if @user.save
             login!(@user)
+            render :show
         else
             flash.now[:errors] = @users.errors.full_messages
         end
